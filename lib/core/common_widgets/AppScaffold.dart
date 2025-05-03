@@ -5,7 +5,7 @@ class AppScaffold extends StatelessWidget {
 
   final String title;
   final Widget? body;
-  final FloatingActionButton? fab;
+  final Widget? fab;
   final List<Widget>? actions;
 
   const AppScaffold({super.key, required this.title, this.body, this.fab, this.actions});

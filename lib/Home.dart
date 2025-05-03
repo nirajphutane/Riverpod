@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_provider/core/common_widgets/AppScaffold.dart';
 import 'package:riverpod_provider/core/common_widgets/Button.dart';
-import 'package:riverpod_provider/provider_modifiers/auto_dispose/AutoDisposeProviderScreen.dart';
-import 'package:riverpod_provider/provider_modifiers/auto_dispose_family/AutoDisposeFamilyProviderScreen.dart';
-import 'package:riverpod_provider/provider_modifiers/family/FamilyProviderScreen.dart';
 import 'core/Navigation/Navigation.dart';
-import 'provider_modifiers/basic/consumer_widget/BasicProviderScreen.dart' as cw;
-import 'provider_modifiers/basic/consumer_stateful_widget/BasicProviderScreen.dart' as csfw;
-import 'provider_modifiers/basic/state_widget/BasicProviderScreen.dart' as sw;
+import 'providers/provider/basic/DataScreen.dart' as basic_provider;
+import 'providers/provider/auto_dispose/DataScreen.dart' as auto_dispose_provider;
+import 'providers/provider/family/DataScreen.dart' as family_provider;
+import 'providers/provider/auto_dispose_family/DataScreen.dart' as auto_dispose_family_provider;
+import 'providers/provider/auto_dispose_keep_alive/DataScreen.dart' as auto_dispose_keep_alive_provider;
+import 'providers/provider/auto_dispose_family_keep_alive/DataScreen.dart' as auto_dispose_family_keep_alive_provider;
 import 'providers/state_provider/basic/CounterScreen.dart' as state_provider;
 import 'providers/state_provider/auto_dispose/CounterScreen.dart' as auto_dispose_state_provider;
 import 'providers/state_provider/proxy_behaviour/CounterScreen.dart' as proxy_state_provider;
@@ -39,12 +39,13 @@ class Home extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              AppButton(text: 'Basic Provider (CW)', onTab: () => Navigation.push(context, const cw.BasicProviderScreen())),
-              AppButton(text: 'Basic Provider (CSFW)', onTab: () => Navigation.push(context, const csfw.BasicProviderScreen())),
-              AppButton(text: 'Basic Provider (SW)', onTab: () => Navigation.push(context, const sw.BasicProviderScreen())),
-              AppButton(text: 'Auto Dispose Provider', onTab: () => Navigation.push(context, const AutoDisposeProviderScreen())),
-              AppButton(text: 'Family Provider', onTab: () => Navigation.push(context, const FamilyProviderScreen())),
-              AppButton(text: 'Auto Dispose Family Provider', onTab: () => Navigation.push(context, const AutoDisposeFamilyProviderScreen())),
+              AppButton(text: 'Basic Provider (StatelessWidget)', onTab: () => Navigation.push(context, const basic_provider.DataScreen())),
+              AppButton(text: 'Auto Dispose Provider (ConsumerWidget)', onTab: () => Navigation.push(context, const auto_dispose_provider.DataScreen())),
+              AppButton(text: 'Family Provider (StatefulWidget)', onTab: () => Navigation.push(context, const family_provider.DataScreen())),
+              AppButton(text: 'Auto Dispose Family Provider (ConsumerStatefulWidget)', onTab: () => Navigation.push(context, const auto_dispose_family_provider.DataScreen())),
+              const Divider(),
+              AppButton(text: 'Auto Dispose KeepAlive Provider', onTab: () => Navigation.push(context, const auto_dispose_keep_alive_provider.DataScreen())),
+              AppButton(text: 'Auto Dispose Family KeepAlive Provider', onTab: () => Navigation.push(context, const auto_dispose_family_keep_alive_provider.DataScreen())),
               const Divider(),
               AppButton(text: 'State Provider', onTab: () => Navigation.push(context, const state_provider.CounterScreen())),
               AppButton(text: 'Auto dispose State Provider', onTab: () => Navigation.push(context, const auto_dispose_state_provider.CounterScreen())),
